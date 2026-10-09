@@ -3,7 +3,7 @@
  "kept_alive": "2026-10-09T12:09:18+00:00",
  "last_alarm": null,
  "summary": {
-  "backend": "not live yet",
+  "backend": "TEST by Claude for Robbie, 2026-10-09 (not real; nothing to fix)",
   "site": {
    "attention": [],
    "http_to_https": true,
