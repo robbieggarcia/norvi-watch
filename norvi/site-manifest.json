@@ -1,0 +1,429 @@
+{
+ "files": {
+  ".htaccess": {
+   "bytes": 1679,
+   "sha256": "2b712b8d69063fc5eccb6d43efa4acf72783adc17225f201c8ab394e1452457b"
+  },
+  "about.html": {
+   "bytes": 8640,
+   "sha256": "dca2af17558be09d2ebbfdfec940fec2713fc4162201a6109a8ce8b374609911"
+  },
+  "app.html": {
+   "bytes": 13534,
+   "sha256": "b51001cfad4301032681e933fb03e591cb1df37860f1db81b0f8dab776c22c05"
+  },
+  "apple-touch-icon.png": {
+   "bytes": 2355,
+   "sha256": "5933ff9f66e0424355911e55c379ccb1a5252458bd3059b1b5994bc7141044ac"
+  },
+  "assets/app.js": {
+   "bytes": 49169,
+   "sha256": "95d70546b2a0ea4c35381ad80b4f12bbad8af99649ae8355a1664afdacc1a12f"
+  },
+  "assets/dashboard.js": {
+   "bytes": 25379,
+   "sha256": "e7ded0d4354a6a7b5b806d90fe9807d3b1c1b77392ce85fd31b159b81e071c60"
+  },
+  "assets/hero-lamp.jpg": {
+   "bytes": 53456,
+   "sha256": "806e09302d9270735c8c8ac395b227ef6365406d48cd7f1b974e748df90493ba"
+  },
+  "assets/hero-loop-tall.av1.mp4": {
+   "bytes": 219868,
+   "sha256": "6b96d972013822168c8cb88581d20bce075d83d1a4424127531fb58b36262b38"
+  },
+  "assets/hero-loop-tall.mp4": {
+   "bytes": 400031,
+   "sha256": "51d44b146c5470ae2496228422d4e10d1fd3df7482cffe5317cda32b88303f21"
+  },
+  "assets/hero-loop.av1.mp4": {
+   "bytes": 551647,
+   "sha256": "38e5783370f90d4db38353923ed926d012deac43319f2cc5ff9a9478e39649f7"
+  },
+  "assets/hero-loop.mp4": {
+   "bytes": 1180277,
+   "sha256": "0845b1514ebfdeff29a9daac0a4de53434ea7097f5543c982e0c2e25d38f4ed3"
+  },
+  "assets/hero-morning-1280.jpg": {
+   "bytes": 58619,
+   "sha256": "6e08ab1f2a614f935723509a6dcbe1f557427801c51d6a16328d5f0016d17dea"
+  },
+  "assets/hero-morning-1920.jpg": {
+   "bytes": 108329,
+   "sha256": "da2733084efb7879b6783143b5b6a983aaa0b933815b5c770d501cfe7548ade6"
+  },
+  "assets/hero-morning-2560.jpg": {
+   "bytes": 166873,
+   "sha256": "7f6bea96e90c2f6137d241e2ca4295dbe2cb241a23a0eef3c7028f727c2d14a2"
+  },
+  "assets/hero-night-1280.jpg": {
+   "bytes": 57721,
+   "sha256": "1eb34c144203a55851e3c8125789ee19935ffe27b40622c23e7914802b6cb497"
+  },
+  "assets/hero-night-1920.jpg": {
+   "bytes": 106387,
+   "sha256": "1a7dd875ac6a4964a0a0daa7f407617822658995d0eb60df7851a5ca93ea926c"
+  },
+  "assets/hero-night-2560.jpg": {
+   "bytes": 175430,
+   "sha256": "50d3be3d64a3393e902f2f6c11a88e84cab065d2e2fe72f75c659af54e10cb5a"
+  },
+  "assets/hero-reveal-loop-tall.av1.mp4": {
+   "bytes": 288393,
+   "sha256": "0c18c62c6a9350c6e2b2ccf6a242ac6d6639c4da025f90482697c66938deab74"
+  },
+  "assets/hero-reveal-loop-tall.mp4": {
+   "bytes": 379426,
+   "sha256": "7a2dce90aa555cf67ce6c3a47490d736a2078f79c59387563f71d64414e2fda0"
+  },
+  "assets/hero-reveal-loop.av1.mp4": {
+   "bytes": 723182,
+   "sha256": "c38e305d82a81c722658900af458cf978294fabbdcddf5ff60065b2613b98e2e"
+  },
+  "assets/hero-reveal-loop.mp4": {
+   "bytes": 1070954,
+   "sha256": "1ec79378bf7e4daca4ede6ae234ab59dd35fe2279fa4e3fa11258ea7eaff7cd4"
+  },
+  "assets/icon-192.png": {
+   "bytes": 4229,
+   "sha256": "fd59a7878abda11c8e38927e06fc55ed93306d3d21f507c22a9149a4a96adae8"
+  },
+  "assets/icon-512.png": {
+   "bytes": 11930,
+   "sha256": "57e803588b03084c8c9c5c7f1b42c409093d6b284c6f93a3232815626ec562c5"
+  },
+  "assets/icon-maskable-512.png": {
+   "bytes": 5902,
+   "sha256": "adee6cb5aad546477b8725e3b20906438c865da19df3be49f1474483133089bb"
+  },
+  "assets/job-agent-1200.jpg": {
+   "bytes": 114238,
+   "sha256": "70856673c184982b28f8d372fe6c7299fe0d7dc7eec90c23b2d5e387bb554a8e"
+  },
+  "assets/job-agent-700.jpg": {
+   "bytes": 54298,
+   "sha256": "ea60a5b3e7355c5f88f5c70fb8d62cc4fdc955d2bb3a12029369cd13d1397577"
+  },
+  "assets/job-baker-1200.jpg": {
+   "bytes": 118041,
+   "sha256": "31e7a26766ccc8960769453cedf4abd1c2cb2560c864864497401808f41b72ce"
+  },
+  "assets/job-baker-700.jpg": {
+   "bytes": 54339,
+   "sha256": "d92efdb194f4df9464c4f9d11192c7215eb53fd0c4f1fa993190de52011757bf"
+  },
+  "assets/job-barber-1200.jpg": {
+   "bytes": 102579,
+   "sha256": "7dade8a95403a1fb97dc8958e645552c5d39cc5434496d248911fac224225564"
+  },
+  "assets/job-barber-700.jpg": {
+   "bytes": 46372,
+   "sha256": "57938beabcb1221df6e4b5dbe298bf418e541047c6f370daf4ef921db5954f52"
+  },
+  "assets/job-bike-480.jpg": {
+   "bytes": 72451,
+   "sha256": "fd3ca72a12ece4db69034378e1c1c9b764e898540f125b3f7fffbce74202e216"
+  },
+  "assets/job-bike-800.jpg": {
+   "bytes": 165231,
+   "sha256": "9f86847bfee705ce71f11967936b74ef5c8f68292129de255b4341040431225d"
+  },
+  "assets/job-cafe-1200.jpg": {
+   "bytes": 122074,
+   "sha256": "f489c89ccef57fee549a33a72a92358721b45e94b50c7594c11de0ef01323998"
+  },
+  "assets/job-cafe-700.jpg": {
+   "bytes": 56973,
+   "sha256": "8746399e8dcc83bbab50446d37d449519ac8928d54a31cf8a83508cb41613108"
+  },
+  "assets/job-carpenter-1200.jpg": {
+   "bytes": 113473,
+   "sha256": "1899cdb57fadaaeb73a420502211d80b68416f3a7461ec0177ff8d4ca426b20a"
+  },
+  "assets/job-carpenter-700.jpg": {
+   "bytes": 51425,
+   "sha256": "ccb7c84d4d00dcb6d782bd22a6f19665c413505ab749fd3e192c5dd0d7bcffbe"
+  },
+  "assets/job-carpet-480.jpg": {
+   "bytes": 61815,
+   "sha256": "ed821d988605dc77637ee05bcea59d407b18c15308cf7704ce432097a26230f1"
+  },
+  "assets/job-carpet-800.jpg": {
+   "bytes": 151804,
+   "sha256": "d75c20cd53abcb5ef71ff30dbc62d9103638f1666d4bd0f0a3ea696d41fb0625"
+  },
+  "assets/job-chef-1200.jpg": {
+   "bytes": 140659,
+   "sha256": "2e753f064ddedb4c1ea5355b8ffac18ce6878ad53d4fc8f579062ba715f45df7"
+  },
+  "assets/job-chef-700.jpg": {
+   "bytes": 67268,
+   "sha256": "38d6ae51e7e64515cc0fe00d10822adec9a9d9aa0c2d27ef3968945cbfd3e434"
+  },
+  "assets/job-cobbler-480.jpg": {
+   "bytes": 64715,
+   "sha256": "ede2a8a65f6ceeb7777844fb52955d39bfd1fb5f972c863ec2d83e9285637d9d"
+  },
+  "assets/job-cobbler-800.jpg": {
+   "bytes": 150754,
+   "sha256": "f77f7bc3c823861b210cb3b296dcb611ebb4ebc53a46437d115aa64e8c75fc05"
+  },
+  "assets/job-colourist-480.jpg": {
+   "bytes": 52869,
+   "sha256": "23d822696c1d5b82044709d3ec70e94e02b5de2ba7d4d90be2eb1ca5e627ebd5"
+  },
+  "assets/job-colourist-800.jpg": {
+   "bytes": 117529,
+   "sha256": "ffd88a4e6d6bf87629e447dcd58ebf6978be38de73d20aa18b8c625eb6336313"
+  },
+  "assets/job-dentist-1200.jpg": {
+   "bytes": 104483,
+   "sha256": "08b9130a5244c3f6603927610825d1cc269a6970010bf560a0cd9400a6fb976c"
+  },
+  "assets/job-dentist-700.jpg": {
+   "bytes": 49212,
+   "sha256": "36480e91544f0c405b2e52c79d011b975b4d7c122cad75b6375a9d30eb06133e"
+  },
+  "assets/job-dogwalker-480.jpg": {
+   "bytes": 72945,
+   "sha256": "5b4f4ad1ea1b3942963638929b5081264c92b72b19712208c6508b43dc2a663f"
+  },
+  "assets/job-dogwalker-800.jpg": {
+   "bytes": 173406,
+   "sha256": "a7b0e7fea44a6ea4619feabc8f1725a4d0c513ee3f2f4418cf03c7a5a2a6736f"
+  },
+  "assets/job-driving-480.jpg": {
+   "bytes": 37500,
+   "sha256": "690282409d01654e47b13158b764826b9b029a53062231f8d945f57e1b4aaacb"
+  },
+  "assets/job-driving-800.jpg": {
+   "bytes": 84943,
+   "sha256": "dcccbdb512f878065220fb61cf58426aa1aeb3368e61c241c01011c7aacc6e6d"
+  },
+  "assets/job-electrician-480.jpg": {
+   "bytes": 36749,
+   "sha256": "e395332fa6ca12b746fc8213de2ccfb327180e4cff3b904ca3b6ae03a7c16017"
+  },
+  "assets/job-electrician-800.jpg": {
+   "bytes": 80837,
+   "sha256": "e93233baf2daa4d123791164a32af8af4561c8fbed84e2be604d575ce75b5c34"
+  },
+  "assets/job-florist-1200.jpg": {
+   "bytes": 177712,
+   "sha256": "05b0e2dae1c59075e0529cab30b08eee36dcbc26ae77781bb584d3699252d141"
+  },
+  "assets/job-florist-700.jpg": {
+   "bytes": 78018,
+   "sha256": "bd8e8599dc9c065c669c6d3ed162624b072aa5fae3fb6a5f24b6c3ce812078c1"
+  },
+  "assets/job-gardener-480.jpg": {
+   "bytes": 115755,
+   "sha256": "674f70c943241e57b8979c0c10786d2563a46cb22f57bb4248be0cb16e137b3e"
+  },
+  "assets/job-gardener-800.jpg": {
+   "bytes": 252507,
+   "sha256": "1213d633940be3110b6d965f60c110411e0287d417e3bda707ec1fe96ce5a238"
+  },
+  "assets/job-glazier-480.jpg": {
+   "bytes": 48941,
+   "sha256": "55340c8913ae022c2f5f27022c1f2c197160d3a38b289f0edcb8f2275a1c9194"
+  },
+  "assets/job-glazier-800.jpg": {
+   "bytes": 114738,
+   "sha256": "fd8687e8d375da1885002305749f51f35e8fe9d798b658c930d86e17010d2aed"
+  },
+  "assets/job-groomer-480.jpg": {
+   "bytes": 62873,
+   "sha256": "673bfc8bb88ec5b9c16f2335732cb78aefc9b7d66fcafc229022f1d04b49d9a7"
+  },
+  "assets/job-groomer-800.jpg": {
+   "bytes": 139004,
+   "sha256": "070968ebb9a6db2ac5c2d84b21ee5cc17f6955ebfd7982489b9af7e767c82444"
+  },
+  "assets/job-guesthouse-1040.jpg": {
+   "bytes": 85352,
+   "sha256": "8a7fc08119d0120e2bb0027e195a6d4a7c069ccf2da44f39713312667c8884de"
+  },
+  "assets/job-guesthouse-700.jpg": {
+   "bytes": 48066,
+   "sha256": "dcd5a73d5fe685cbbacb899136c0e30600ebd5d353f0ea6453aad96ef87f1712"
+  },
+  "assets/job-hairdresser-480.jpg": {
+   "bytes": 48657,
+   "sha256": "4ad3c984073923a12e7ff0dd59e43035a0f34db9c32e6368104ae13cc595a150"
+  },
+  "assets/job-hairdresser-800.jpg": {
+   "bytes": 111017,
+   "sha256": "a617ac9cab225586bdc6ccd40c5b72cd4c12ea16b832b76af9fe8b1779114fd9"
+  },
+  "assets/job-heating-480.jpg": {
+   "bytes": 51234,
+   "sha256": "b95dc46e5eee00907389af83808690869db94fa484d209f4c493dcd28807f79d"
+  },
+  "assets/job-heating-800.jpg": {
+   "bytes": 115027,
+   "sha256": "9dded31d891cd5c74ab010f08cc3fa914b7cf6f6605c7c2c07948a5f2da82f2c"
+  },
+  "assets/job-locksmith-480.jpg": {
+   "bytes": 60181,
+   "sha256": "fad971ec4e67465a8939c7c6fd283c00f6c2d2a6ee24f31f71e128c30b0526ea"
+  },
+  "assets/job-locksmith-800.jpg": {
+   "bytes": 133213,
+   "sha256": "4fffe0f7174686e84a983530d92988d5416b03f8a1b7cfc3ac89f3ad84697c56"
+  },
+  "assets/job-mechanic-1200.jpg": {
+   "bytes": 158196,
+   "sha256": "7bede396e862d6e1b7a1dce20f997164cb9018407ad54e2f9b923e326f547c85"
+  },
+  "assets/job-mechanic-700.jpg": {
+   "bytes": 69065,
+   "sha256": "08e98575cb2aceb2ee962ad257d8473ef7335ebc5d367a309d0ef9108fd15788"
+  },
+  "assets/job-nails-480.jpg": {
+   "bytes": 47630,
+   "sha256": "1757b3fdd40afb5b1b98b5da55275c854c77a9fae6f88d23e4eac5ce863f369b"
+  },
+  "assets/job-nails-800.jpg": {
+   "bytes": 106145,
+   "sha256": "d9fd69f4082d8df3b2ea8115309979610f900c421810898fa46b7322f93b61bc"
+  },
+  "assets/job-optician-480.jpg": {
+   "bytes": 59708,
+   "sha256": "0f68e189b1f63768169df35191f1399a6e1f3f5da55c4a98e3c6419e2a7ccc91"
+  },
+  "assets/job-optician-800.jpg": {
+   "bytes": 132420,
+   "sha256": "c10e814e81a1f1c95bbdca81ee0ca5e48fbc13fbb019bf85fb48cb5df1a4c565"
+  },
+  "assets/job-painter-1200.jpg": {
+   "bytes": 94776,
+   "sha256": "b31c8ce991e50be669ea16354fb5b8c04582b6ec6ac010db1de9277df952b6fd"
+  },
+  "assets/job-painter-700.jpg": {
+   "bytes": 40491,
+   "sha256": "be0dfc8453ef1098f7537d5a19bade552898b181544398584b262f4918016293"
+  },
+  "assets/job-piano-480.jpg": {
+   "bytes": 66757,
+   "sha256": "e65e338a68aa41b04bccb29aadae488c38edde51c91b727fd97d498f0736137c"
+  },
+  "assets/job-piano-800.jpg": {
+   "bytes": 156377,
+   "sha256": "c1d969e362a8168fe0b84860eb0fe6c9ad4522d7385b405b8e1ae275be548bb2"
+  },
+  "assets/job-plumber-1200.jpg": {
+   "bytes": 131360,
+   "sha256": "6b76624c86e4af7e5092ec1a267e12ed0cd071b69de2488dbb90815bb0c14c5f"
+  },
+  "assets/job-plumber-700.jpg": {
+   "bytes": 60422,
+   "sha256": "18922d4610a2ef06ade2beb7252b16cd301c747aebb9762f20c5f87901696115"
+  },
+  "assets/job-roofer-480.jpg": {
+   "bytes": 62729,
+   "sha256": "e4c146fa306f3dd1f00b15080c6f0248dc70dfff7e02f16b9950da84da046666"
+  },
+  "assets/job-roofer-800.jpg": {
+   "bytes": 148500,
+   "sha256": "7ac7796b25247668abf180e5f78f545fa517eb59f9ffc3ac0c8f444222c891ad"
+  },
+  "assets/job-tailor-1040.jpg": {
+   "bytes": 109938,
+   "sha256": "9e6ca171b015a4b2b954a6482ebe12ddd35cd725199b52fac85c1767ffda5000"
+  },
+  "assets/job-tailor-700.jpg": {
+   "bytes": 61730,
+   "sha256": "bc5ad1b8eaf5dcffc1cb9731e823d6fbee6ccf4ec734d1a72383aac790897665"
+  },
+  "assets/job-tiler-1040.jpg": {
+   "bytes": 223333,
+   "sha256": "54325e811b4d59b1eb184b1ae73587d404829662c0d799cbd0836c27ec2f2163"
+  },
+  "assets/job-tiler-640.jpg": {
+   "bytes": 96033,
+   "sha256": "6f99eade170383ca9f1c97671dd16223dc1026aac4948b990a48fd702258cf15"
+  },
+  "assets/job-trainer-480.jpg": {
+   "bytes": 47984,
+   "sha256": "ab6fab19068af9f721afb9de4998844ab460e56c4c0364ea75bd8935078292da"
+  },
+  "assets/job-trainer-800.jpg": {
+   "bytes": 108887,
+   "sha256": "c9e360ce5d4a0216d5c59a01ebe6e9512e0ef8e616f53e39fdb80196fc1a2add"
+  },
+  "assets/job-upholsterer-480.jpg": {
+   "bytes": 66344,
+   "sha256": "577be4fb101ec2144d840cea1bb2e0949a4995f222302f2e762bb0a587c58ecd"
+  },
+  "assets/job-upholsterer-800.jpg": {
+   "bytes": 155155,
+   "sha256": "4aa5eb35f48f6783d72f75884826a05f6d121f1ffa35b374e29069866b93d1a6"
+  },
+  "assets/job-vet-1280.jpg": {
+   "bytes": 90157,
+   "sha256": "a4a2933d0b70aa90e12b17a83d67e53d6b29dbdab6963fdecac5fe96b57088a9"
+  },
+  "assets/job-vet-1920.jpg": {
+   "bytes": 162656,
+   "sha256": "f6f2d8f2abd0deab3e63ddb34eae8a131536a50067a7d9cc5c6652c2d93457a6"
+  },
+  "assets/job-window-480.jpg": {
+   "bytes": 66355,
+   "sha256": "65c96ae201e13e5d2a6da7c1cb1cb2e8dc293225a7967e90ec81d815a3b797e8"
+  },
+  "assets/job-window-800.jpg": {
+   "bytes": 156342,
+   "sha256": "34514c18679a49c90bb375c82e506c52f06bb90a5707356727426337b43c5a19"
+  },
+  "assets/nightfx.js": {
+   "bytes": 17820,
+   "sha256": "a1fe884ae595ad995e5e0144c898b36a455d3f1f87b0c1869d23c849490b5380"
+  },
+  "assets/site.js": {
+   "bytes": 10374,
+   "sha256": "fb62bad4e08c5094f7795f4af6b1475c416585437659300b5a833f880f839f3d"
+  },
+  "assets/style.css": {
+   "bytes": 94121,
+   "sha256": "9e15cef2fb1d4c068b640a3045896b714b762617634b8526be3fcd383ce47b69"
+  },
+  "assets/topo.js": {
+   "bytes": 7015,
+   "sha256": "7ba3fa0fed909644799a25bfdb3eed03ff93f7443316b4719feb4908a957d45d"
+  },
+  "favicon.ico": {
+   "bytes": 2227,
+   "sha256": "2174f2b21a9abe6dde1fdcc555b63f97fe80139a9a51f5ead9d355d8f857ac2a"
+  },
+  "favicon.svg": {
+   "bytes": 304,
+   "sha256": "03b48fbd355ae65305850ac554d231b3095d581a00f34681754ba667a7a6f77a"
+  },
+  "index.html": {
+   "bytes": 40190,
+   "sha256": "59b004a9923360c9f6ad33564dfdd968cfa0d471057d07e21ea1dd0a7bef6301"
+  },
+  "pricing.html": {
+   "bytes": 12879,
+   "sha256": "28b552abd60011f68fdfb3adb96635008031d4f33c48b2d5f30374d51ac8f1e4"
+  },
+  "receptionists.html": {
+   "bytes": 16444,
+   "sha256": "169631ffad276ec518f1296c6f75d10a353c7ea10492e7680f5a734d530a5941"
+  },
+  "robots.txt": {
+   "bytes": 101,
+   "sha256": "07616d55f345f59265ca1d844b286e3625e8d1942f7bae752ed6bcfefc70a7c8"
+  },
+  "site.webmanifest": {
+   "bytes": 511,
+   "sha256": "014adf4e4b80eeaadb41065fb873e65b608a2e594da3ff80d5cae86757bfb686"
+  },
+  "sitemap.xml": {
+   "bytes": 542,
+   "sha256": "631ee4126e68e61f6cd3ca3520bf3606d7f60be5108edbfc5d158aec054271f6"
+  }
+ },
+ "source": "Norvi/deploy"
+}

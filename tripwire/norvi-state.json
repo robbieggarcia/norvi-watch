@@ -1,0 +1,40 @@
+{
+ "checked_at": "2026-10-09T11:39:13+00:00",
+ "last_alarm": null,
+ "summary": {
+  "backend": "not live yet",
+  "site": {
+   "attention": [],
+   "http_to_https": true,
+   "pages": {
+    "/": {
+     "matches_manifest": true,
+     "missing_text": [],
+     "status": 200
+    },
+    "/about.html": {
+     "matches_manifest": true,
+     "missing_text": [],
+     "status": 200
+    },
+    "/app.html": {
+     "matches_manifest": true,
+     "missing_text": [],
+     "status": 200
+    },
+    "/pricing.html": {
+     "matches_manifest": true,
+     "missing_text": [],
+     "status": 200
+    },
+    "/receptionists.html": {
+     "matches_manifest": true,
+     "missing_text": [],
+     "status": 200
+    }
+   },
+   "tls_warn": false,
+   "verdict": "ALL OK"
+  }
+ }
+}
