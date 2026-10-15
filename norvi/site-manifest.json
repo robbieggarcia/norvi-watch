@@ -17,8 +17,8 @@
    "sha256": "5933ff9f66e0424355911e55c379ccb1a5252458bd3059b1b5994bc7141044ac"
   },
   "assets/app.js": {
-   "bytes": 49169,
-   "sha256": "95d70546b2a0ea4c35381ad80b4f12bbad8af99649ae8355a1664afdacc1a12f"
+   "bytes": 49256,
+   "sha256": "ff4f9f0d36ccf425bc4b09cfd320162da4f963052fec3eb2f424298753edf101"
   },
   "assets/dashboard.js": {
    "bytes": 25379,
@@ -401,12 +401,12 @@
    "sha256": "03b48fbd355ae65305850ac554d231b3095d581a00f34681754ba667a7a6f77a"
   },
   "index.html": {
-   "bytes": 40190,
-   "sha256": "59b004a9923360c9f6ad33564dfdd968cfa0d471057d07e21ea1dd0a7bef6301"
+   "bytes": 40185,
+   "sha256": "2c9a80a0d22f810e5905656f6811c39e72684e243e61e535d1697f3170261183"
   },
   "pricing.html": {
-   "bytes": 12879,
-   "sha256": "28b552abd60011f68fdfb3adb96635008031d4f33c48b2d5f30374d51ac8f1e4"
+   "bytes": 12865,
+   "sha256": "30b4c920dec8d773be5888fcbbfc73b5745d44ae1fef989134fae6360bdbe7e1"
   },
   "receptionists.html": {
    "bytes": 16444,
