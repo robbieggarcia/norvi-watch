@@ -1,20 +1,21 @@
 #!/usr/bin/env python3
-"""Norvi tripwire: a plain check, no Claude, between the Norvi Manager's runs.
+"""Norvi tripwire: a plain check, no Claude, that wakes the President when something changes.
 
     python3 tools/norvi_tripwire.py                    # all checks; from the repo root
     python3 tools/norvi_tripwire.py --only site,backend
     python3 tools/norvi_tripwire.py --only dates
     python3 tools/norvi_tripwire.py --dry-run          # check and print, write and send nothing
+    python3 tools/norvi_tripwire.py --only dates --test   # a test alarm: an issue and a wake, state untouched
     python3 tools/norvi_tripwire.py --selftest
-    env: GITHUB_TOKEN, GITHUB_REPOSITORY (set by GitHub Actions), NORVI_ROUTINE_ID and NORVI_ROUTINE_TOKEN (optional)
+    env: GITHUB_TOKEN, GITHUB_REPOSITORY (set by GitHub Actions), PRESIDENT_ROUTINE_ID and PRESIDENT_ROUTINE_TOKEN (optional)
 
 The checks: heynorvi.com with site_check.py (status, manifest match, prices, TLS, http->https), the
 backend's /healthz once app.heynorvi.com is live, and the dates in tools/norvi_dates.json. It compares
 a summary with the last one (tripwire/norvi-state.json). Only when something changed, or a failure is
 still open 6 hours after the last alarm, it trips:
-  - opens (or comments on) a GitHub issue in this repo labeled norvi-tripwire, which the Norvi Manager
-    reads and closes;
-  - fires the Norvi Manager routine when NORVI_ROUTINE_ID and NORVI_ROUTINE_TOKEN are set.
+  - opens (or comments on) a GitHub issue in this repo labeled norvi-tripwire, which the President turns
+    into a job for Watchman, who checks it and closes the issue;
+  - fires the President routine when PRESIDENT_ROUTINE_ID and PRESIDENT_ROUTINE_TOKEN are set.
 It never changes the site, the backend or any account. Exit 0 always (a broken check is itself a trip).
 """
 import datetime as dt
@@ -84,10 +85,18 @@ def due_dates(today):
         return ["dates file unreadable"]
     out = []
     for it in items:
+        if not it.get("date"):  # an undated item is listed for people, never an alarm
+            continue
         days = (dt.date.fromisoformat(it["date"]) - today).days
         if days <= DATE_WARN_DAYS:
-            out.append("{} on {} ({} days): {}".format(it["what"], it["date"], days, it["fix"]))
+            out.append("{} on {} ({}): {}".format(it["what"], it["date"], when(days), it["fix"]))
     return out
+
+
+def when(days):
+    """A coarse window, so a date alarms once at 30 days, once at 7 and once when past, not every day
+    (2026-10-15: the exact day count made the Twilio date re-alarm every 6 hours, each a full Norvi run)."""
+    return "past" if days < 0 else "within 7 days" if days <= 7 else "within 30 days"
 
 
 def summary(s, b, d):
@@ -108,7 +117,7 @@ def failing(summ):
     pages_bad = any(p.get("status") != 200 or p.get("missing_text") for p in s.get("pages", {}).values())
     return (s.get("verdict") == "COULDN'T CHECK" or pages_bad
             or s.get("http_to_https") is False or bool(s.get("tls_warn")) or str(summ.get("backend", "")).startswith(("down", "HTTP"))
-            or bool(summ.get("dates")))
+            )  # dates alarm when they enter a window (changes()), never as a 6-hour "still failing" reminder
 
 
 def changes(old, new):
@@ -162,7 +171,7 @@ def gh(method, path, body=None):
 
 
 def raise_issue(lines, now):
-    body = "The Norvi tripwire found this at {} UTC:\n\n{}\n\nThe Norvi Manager handles it in its next run and closes this issue.".format(
+    body = "The Norvi tripwire found this at {} UTC:\n\n{}\n\nWatchman (Norvi City) checks it and closes this issue.".format(
         now.strftime("%Y-%m-%d %H:%M"), "\n".join("- " + l for l in lines))
     try:
         open_ = gh("GET", "issues?labels=norvi-tripwire&state=open")
@@ -177,24 +186,31 @@ def raise_issue(lines, now):
 
 
 def fire(lines):
-    token, routine = os.environ.get("NORVI_ROUTINE_TOKEN", "").strip(), os.environ.get("NORVI_ROUTINE_ID", "").strip()
+    token, routine = os.environ.get("PRESIDENT_ROUTINE_TOKEN", "").strip(), os.environ.get("PRESIDENT_ROUTINE_ID", "").strip()
     if not token or not routine:
-        print("Norvi Manager not woken: NORVI_ROUTINE_ID or NORVI_ROUTINE_TOKEN not set (the issue waits for its next run)")
+        print("President not woken: PRESIDENT_ROUTINE_ID or PRESIDENT_ROUTINE_TOKEN not set (the issue waits for the next heartbeat)")
         return
     req = urllib.request.Request(FIRE_URL.format(routine), data=json.dumps({"text": "Norvi tripwire: " + lines[0][:200]}).encode(),
                                  headers={"Authorization": "Bearer " + token, "anthropic-version": "2023-06-01",
                                           "anthropic-beta": "experimental-cc-routine-2026-04-01", "Content-Type": "application/json"})
     try:
         with urllib.request.urlopen(req, timeout=30) as r:
-            print("Norvi Manager woken ({})".format(r.status))
+            print("President woken ({})".format(r.status))
     except urllib.error.HTTPError as e:
-        print("Norvi Manager not woken (HTTP {})".format(e.code))
+        print("President not woken (HTTP {})".format(e.code))
     except Exception as e:
-        print("Norvi Manager not woken ({})".format(type(e).__name__))
+        print("President not woken ({})".format(type(e).__name__))
 
 
-def main(dry, parts):
+def main(dry, parts, test=False):
     now = dt.datetime.now(dt.timezone.utc)
+    if test:  # proves the path (issue, wake, Watchman) without touching the state or the checks
+        lines = ["Test alarm ({}): checking that an alarm reaches Watchman. Nothing is wrong.".format(",".join(sorted(parts)))]
+        print("TEST", *lines, sep="\n")
+        if not dry:
+            raise_issue(lines, now)
+            fire(lines)
+        return
     new = summary(site() if "site" in parts else None, backend() if "backend" in parts else None,
                   due_dates(now.date()) if "dates" in parts else None)
     try:
@@ -240,6 +256,10 @@ def selftest():
     assert decide(st3, down, t + dt.timedelta(hours=9))[0]
     if os.path.exists(DATES):
         assert due_dates(dt.date(2027, 9, 1))                      # the domain renewal is inside 30 days then
+        assert due_dates(dt.date(2027, 9, 1)) == due_dates(dt.date(2027, 9, 2))  # no new alarm each day
+    assert [when(29), when(8), when(7), when(0), when(-1)] == ["within 30 days"] * 2 + ["within 7 days"] * 2 + ["past"]
+    dated = summary(None, None, ["x on 2026-11-14 (within 30 days): y"])
+    assert not failing(dated) and not decide({"summary": dated, "last_alarm": t.isoformat()}, dated, t + dt.timedelta(hours=9))[0]
     dates_only = summary(None, None, [])                           # the private repo checks only dates:
     assert not decide(st, dates_only, t + dt.timedelta(hours=1))[0]  # dropping the site check is not a change
     assert decide({"summary": dates_only}, summary(None, None, ["x on 2027-09-25"]), t)[0]
@@ -251,4 +271,4 @@ if __name__ == "__main__":
         selftest()
     else:
         only = next((a.split("=", 1)[1] if "=" in a else sys.argv[sys.argv.index(a) + 1] for a in sys.argv if a.startswith("--only")), "site,backend,dates")
-        main("--dry-run" in sys.argv, set(only.split(",")))
+        main("--dry-run" in sys.argv, set(only.split(",")), "--test" in sys.argv)

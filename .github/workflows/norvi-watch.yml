@@ -2,7 +2,8 @@ name: Norvi watch
 
 # A plain Python check (no AI) of heynorvi.com and, once it is live, app.heynorvi.com/healthz, every
 # 30 minutes. It speaks up only when something changed, or a failure is still open 6 hours later: an
-# issue labeled norvi-tripwire here, and a wake-up for the Norvi Manager routine.
+# issue labeled norvi-tripwire here, and a wake-up for the President routine, which hands it to Watchman.
+# Run it by hand with test=yes to prove that path (an issue and a wake, nothing else).
 # Public repo, so Actions minutes are free. Only these two triggers, on purpose: never add pull_request
 # or pull_request_target, so no outside change can ever run with this repo's secrets.
 
@@ -10,6 +11,11 @@ on:
   schedule:
     - cron: '7,37 * * * *'
   workflow_dispatch:
+    inputs:
+      test:
+        description: "yes sends a test alarm (an issue and a wake), nothing else"
+        required: false
+        default: ""
 
 concurrency:
   group: norvi-watch
@@ -28,9 +34,9 @@ jobs:
       - name: Check
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NORVI_ROUTINE_ID: ${{ secrets.NORVI_ROUTINE_ID }}
-          NORVI_ROUTINE_TOKEN: ${{ secrets.NORVI_ROUTINE_TOKEN }}
-        run: python3 tools/norvi_tripwire.py --only site,backend
+          PRESIDENT_ROUTINE_ID: ${{ secrets.PRESIDENT_ROUTINE_ID }}
+          PRESIDENT_ROUTINE_TOKEN: ${{ secrets.PRESIDENT_ROUTINE_TOKEN }}
+        run: python3 tools/norvi_tripwire.py --only site,backend ${{ inputs.test == 'yes' && '--test' || '' }}
       - name: Save state when it changed
         run: |
           git add tripwire/norvi-state.json
