@@ -5,12 +5,12 @@
    "sha256": "5058466b64f84d585d06e3d85557dc76794e97cc19a5a1a33a2544e581af7d94"
   },
   "about.html": {
-   "bytes": 8287,
-   "sha256": "0ca1f3df189fb1607cebfdc57e4c8d8f556023b6bd500d2a8a7a2668f9984787"
+   "bytes": 8365,
+   "sha256": "73384bef61439e0c6265a5e3479e5fb966361cb24a596e80e5d4b72c37ea15cc"
   },
   "app.html": {
-   "bytes": 13087,
-   "sha256": "c0cf047ed26c7c84aff8499ef32eb12e56dff6da0af3cfb7442907d56d7c5239"
+   "bytes": 13165,
+   "sha256": "170ed5af840eb8c73c1adf92ff6b1c16a63996acbb609f8fd4cb500e8394a8ad"
   },
   "apple-touch-icon.png": {
    "bytes": 2355,
@@ -405,8 +405,8 @@
    "sha256": "fb62bad4e08c5094f7795f4af6b1475c416585437659300b5a833f880f839f3d"
   },
   "assets/style.css": {
-   "bytes": 95608,
-   "sha256": "80a23d70a6dc92ca70171e061997883a8788de502dec18d9355bedd0effa201e"
+   "bytes": 95784,
+   "sha256": "a9c226f16ca27c8dd5607bd1140418d29d8c11bbcc3d42092ffa61ee19a30ca2"
   },
   "assets/topo.js": {
    "bytes": 7015,
@@ -421,16 +421,20 @@
    "sha256": "03b48fbd355ae65305850ac554d231b3095d581a00f34681754ba667a7a6f77a"
   },
   "index.html": {
-   "bytes": 40064,
-   "sha256": "fdc1a75f1085245d2c14cbafe449497cfeead49c32a8dcee67a5054f63e54ce7"
+   "bytes": 40142,
+   "sha256": "a9b57799e18d23762718c9c3dc8cc614aa1f5c149345b462c56ddf5cd04d4d25"
   },
   "pricing.html": {
-   "bytes": 12631,
-   "sha256": "816082f9767ccc22fc66777701de6498b6d5ce4690e5c46558d7addd7841d333"
+   "bytes": 12709,
+   "sha256": "534ad111cc0f1123a234ab5c0318c0937daee03958ccf78d9e13586736865d6d"
+  },
+  "privacy.html": {
+   "bytes": 12277,
+   "sha256": "866ca2f4a82db1212d85cd85ab3a417e296ba6954431f79557941793e02dbb22"
   },
   "receptionists.html": {
-   "bytes": 16123,
-   "sha256": "3a4c7d3356b1dc2619396f1ee3024666c9eed1bb92343b56c77d4ddc022d0bfd"
+   "bytes": 16201,
+   "sha256": "3013dec8cd96cf1fca475fa72868990a24f8b03f3d2e7df26106c0314d9c4739"
   },
   "robots.txt": {
    "bytes": 101,
@@ -441,8 +445,12 @@
    "sha256": "014adf4e4b80eeaadb41065fb873e65b608a2e594da3ff80d5cae86757bfb686"
   },
   "sitemap.xml": {
-   "bytes": 542,
-   "sha256": "631ee4126e68e61f6cd3ca3520bf3606d7f60be5108edbfc5d158aec054271f6"
+   "bytes": 756,
+   "sha256": "677981bce560024b9fb30aaf95fbf3a602636611309afe5b88f3923d8b678cad"
+  },
+  "terms.html": {
+   "bytes": 10007,
+   "sha256": "9b21ea70b580b2bfe9d0e9ad0bf5e2b64f2b19350b48b59bc0a89cfbaab1ff63"
   }
  },
  "source": "Norvi/deploy"
