@@ -171,7 +171,7 @@ def gh(method, path, body=None):
 
 
 def raise_issue(lines, now):
-    body = "The Norvi tripwire found this at {} UTC:\n\n{}\n\nWatchman (Norvi City) checks it and closes this issue.".format(
+    body = "The Norvi tripwire found this at {} UTC:\n\n{}\n\nWatchman (Norvi District) checks it and closes this issue.".format(
         now.strftime("%Y-%m-%d %H:%M"), "\n".join("- " + l for l in lines))
     try:
         open_ = gh("GET", "issues?labels=norvi-tripwire&state=open")
