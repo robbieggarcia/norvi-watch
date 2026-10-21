@@ -1,11 +1,41 @@
 {
- "checked_at": "2026-10-21T08:01:09+00:00",
+ "checked_at": "2026-10-21T09:01:10+00:00",
  "kept_alive": "2026-10-09T12:09:18+00:00",
- "last_alarm": "2026-10-21T08:01:09+00:00",
+ "last_alarm": "2026-10-21T09:01:10+00:00",
  "summary": {
   "backend": "ok",
   "site": {
-   "verdict": "COULDN'T CHECK: TimeoutExpired"
+   "attention": [],
+   "http_to_https": true,
+   "pages": {
+    "/": {
+     "matches_manifest": true,
+     "missing_text": [],
+     "status": 200
+    },
+    "/about.html": {
+     "matches_manifest": true,
+     "missing_text": [],
+     "status": 200
+    },
+    "/app.html": {
+     "matches_manifest": true,
+     "missing_text": [],
+     "status": 200
+    },
+    "/pricing.html": {
+     "matches_manifest": true,
+     "missing_text": [],
+     "status": 200
+    },
+    "/receptionists.html": {
+     "matches_manifest": true,
+     "missing_text": [],
+     "status": 200
+    }
+   },
+   "tls_warn": false,
+   "verdict": "ALL OK"
   }
  }
 }
