@@ -146,18 +146,32 @@ def changes(old, new):
     return lines
 
 
+def blind(summ):
+    """The site check itself couldn't run (a timeout, a crash): no news about the site."""
+    return bool(summ) and str(summ.get("site", {}).get("verdict", "")).startswith("COULDN'T CHECK")
+
+
 def decide(state, new, now):
     """(trip?, reason lines, new state). First run only records a baseline unless something already fails."""
-    old = state.get("summary") if state else None
-    lines = changes(old, new)
+    state = state or {}
+    old = state.get("summary")
+    at = now.isoformat(timespec="seconds")
+    # ponytail: one check that can't run is the checker, not the site (Oct 21, 27, 28: each timeout and its recovery
+    # were an alarm pair and two Norvi team starts; Watchman found the site fine every time). It trips only when the
+    # next check (30 min later) can't run either. Ceiling: a real outage that also breaks the checker is seen 30 min later.
+    if blind(new) and old is not None and not blind(old) and not state.get("blind_since"):
+        return False, [], dict(state, checked_at=at, blind_since=at)
+    # Coming back after a blind spell compares with the last check that could see the site, so a recovery is no alarm.
+    base = state.get("good") if blind(old) and not blind(new) and state.get("good") else old
+    lines = changes(base, new)
     bad = failing(new)
-    last = state.get("last_alarm") if state else None
+    last = state.get("last_alarm")
     stale = bad and (not last or (now - dt.datetime.fromisoformat(last)).total_seconds() > REMIND_HOURS * 3600)
     trip = bool(lines) or (old is None and bad) or (bad and stale and old == new)
     if trip and not lines:
         lines = ["Still failing: " + json.dumps(new)[:400]]
-    return trip, lines, {"summary": new, "checked_at": now.isoformat(timespec="seconds"),
-                         "last_alarm": now.isoformat(timespec="seconds") if trip else last}
+    return trip, lines, {"summary": new, "checked_at": at, "last_alarm": at if trip else last,
+                         "good": state.get("good") if blind(new) else new}
 
 
 def gh(method, path, body=None):
@@ -229,7 +243,8 @@ def main(dry, parts, test=False):
     alive = (state or {}).get("kept_alive")
     fresh = alive and (now - dt.datetime.fromisoformat(alive)).days < KEEP_ALIVE_DAYS
     nxt["kept_alive"] = alive if fresh else now.isoformat(timespec="seconds")
-    if state is None or state.get("summary") != nxt["summary"] or trip or not fresh:
+    if (state is None or state.get("summary") != nxt["summary"] or trip or not fresh
+            or state.get("blind_since") != nxt.get("blind_since") or state.get("good") != nxt.get("good")):
         os.makedirs(os.path.dirname(STATE), exist_ok=True)
         json.dump(nxt, open(STATE, "w"), indent=1, sort_keys=True)
         print("state written")
@@ -254,6 +269,19 @@ def selftest():
     assert trip and failing(down)
     assert not decide(st3, down, t + dt.timedelta(hours=4))[0]     # still down, reminded only after 6 h
     assert decide(st3, down, t + dt.timedelta(hours=9))[0]
+    # A check that times out once is quiet, and so is the recovery after it; twice in a row trips, its recovery doesn't.
+    to = summary({"verdict": "COULDN'T CHECK: TimeoutExpired"}, "not live yet", [])
+    st4 = decide(st, ok, t + dt.timedelta(hours=1))[2]               # a healthy check: the last good one
+    trip, _, b1 = decide(st4, to, t + dt.timedelta(hours=2))
+    assert not trip and b1["summary"] == ok and b1["blind_since"]
+    trip, _, r1 = decide(b1, ok, t + dt.timedelta(hours=2, minutes=30))
+    assert not trip and "blind_since" not in r1
+    trip, lines, b2 = decide(b1, to, t + dt.timedelta(hours=2, minutes=30))
+    assert trip and "COULDN'T CHECK" in lines[0] and b2["good"] == ok
+    assert not decide(b2, ok, t + dt.timedelta(hours=3))[0]          # back to how it was: no recovery alarm
+    worse = json.loads(json.dumps(ok)); worse["site"]["pages"]["/"]["status"] = 503
+    assert decide(b2, worse, t + dt.timedelta(hours=3))[0]           # back, but changed: still an alarm
+    assert decide(b1, worse, t + dt.timedelta(hours=2, minutes=30))[0]
     if os.path.exists(DATES):
         assert due_dates(dt.date(2027, 9, 1))                      # the domain renewal is inside 30 days then
         assert due_dates(dt.date(2027, 9, 1)) == due_dates(dt.date(2027, 9, 2))  # no new alarm each day
