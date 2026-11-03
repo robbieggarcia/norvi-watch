@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-11-03T23:01:20+00:00",
+ "checked_at": "2026-11-03T23:14:40+00:00",
  "good": {
   "backend": "ok",
   "site": {
@@ -7,9 +7,9 @@
    "http_to_https": true,
    "pages": {
     "/": {
-     "matches_manifest": null,
+     "matches_manifest": true,
      "missing_text": [],
-     "status": "unreachable"
+     "status": 200
     },
     "/about.html": {
      "matches_manifest": true,
@@ -37,7 +37,7 @@
   }
  },
  "kept_alive": "2026-11-03T13:01:29+00:00",
- "last_alarm": "2026-11-03T23:01:20+00:00",
+ "last_alarm": "2026-11-03T23:14:40+00:00",
  "summary": {
   "backend": "ok",
   "site": {
@@ -45,9 +45,9 @@
    "http_to_https": true,
    "pages": {
     "/": {
-     "matches_manifest": null,
+     "matches_manifest": true,
      "missing_text": [],
-     "status": "unreachable"
+     "status": 200
     },
     "/about.html": {
      "matches_manifest": true,
