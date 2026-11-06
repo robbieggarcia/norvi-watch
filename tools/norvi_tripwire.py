@@ -37,6 +37,7 @@ HEALTH = "https://app.heynorvi.com/healthz"
 FIRE_URL = "https://api.anthropic.com/v1/claude_code/routines/{}/fire"
 DATE_WARN_DAYS = 30
 REMIND_HOURS = 6
+BACKEND_PAUSED_UNTIL = dt.date(2026, 12, 1)  # a known pause: until then a backend that stops alarms once, not every 6 hours
 KEEP_ALIVE_DAYS = 25  # GitHub turns off schedules in a public repo after 60 days without a commit
 
 
@@ -76,6 +77,12 @@ def backend():
         return "not live yet" if "Name or service not known" in str(e.reason) or "nodename" in str(e.reason) else "down: " + str(e.reason)[:60]
     except Exception as e:
         return "down: " + type(e).__name__
+
+
+def held(state, today):
+    """A backend that stops during a known pause reads as paused: one alarm when it stops, one when it is back.
+    ponytail: a date in the code, so it ends by itself; if the pause runs long, move it here and in the other repo's copy."""
+    return "paused until {}".format(BACKEND_PAUSED_UNTIL) if state.startswith(("down", "HTTP")) and today <= BACKEND_PAUSED_UNTIL else state
 
 
 def due_dates(today):
@@ -225,7 +232,7 @@ def main(dry, parts, test=False):
             raise_issue(lines, now)
             fire(lines)
         return
-    new = summary(site() if "site" in parts else None, backend() if "backend" in parts else None,
+    new = summary(site() if "site" in parts else None, held(backend(), now.date()) if "backend" in parts else None,
                   due_dates(now.date()) if "dates" in parts else None)
     try:
         state = json.load(open(STATE))
@@ -291,6 +298,11 @@ def selftest():
     dates_only = summary(None, None, [])                           # the private repo checks only dates:
     assert not decide(st, dates_only, t + dt.timedelta(hours=1))[0]  # dropping the site check is not a change
     assert decide({"summary": dates_only}, summary(None, None, ["x on 2027-09-25"]), t)[0]
+    paused = summary(None, held("HTTP 503", BACKEND_PAUSED_UNTIL), None)
+    assert paused["backend"].startswith("paused") and not failing(paused) and held("ok", BACKEND_PAUSED_UNTIL) == "ok"
+    assert decide({"summary": summary(None, "ok", None)}, paused, t)[0]                                      # one alarm when it stops,
+    assert not decide({"summary": paused, "last_alarm": t.isoformat()}, paused, t + dt.timedelta(hours=9))[0]  # no reminders after it
+    assert held("HTTP 503", BACKEND_PAUSED_UNTIL + dt.timedelta(days=1)) == "HTTP 503"                       # and the pause ends by itself
     print("selftest ok")
 
 
